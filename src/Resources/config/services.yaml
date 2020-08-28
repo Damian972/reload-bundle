@@ -7,7 +7,7 @@ services:
         tags:
             - { name: console.command }
 
-    Damian972\ReloadBundle\Command\ConfigureCommand: '@reload.command.watcher'
+    Damian972\ReloadBundle\Command\ConfigureCommand: '@reload.command.configure'
 
     reload.command.watcher:
         public: true
