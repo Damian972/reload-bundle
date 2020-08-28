@@ -1,0 +1,32 @@
+{
+	"name": "damian972/reload-bundle",
+	"description": "Simple bundle for twig template live reload",
+	"keywords": [
+		"symfony",
+		"symfony 5",
+		"symfony-bundle",
+		"twig",
+		"live reload"
+	],
+	"type": "symfony-bundle",
+	"license": "Apache-2.0",
+	"homepage": "https://github.com/Damian972/reload-bundle",
+	"authors": [
+		{
+			"name": "Damian972",
+			"homepage": "https://github.com/Damian972"
+		}
+	],
+	"require": {
+		"php": ">=7.2.5",
+		"symfony/framework-bundle": "^5.1",
+		"symfony/twig-pack": "*",
+		"symfony/yaml": "^5.1"
+	},
+	"autoload": {
+		"psr-4": {
+			"Damian972\\ReloadBundle\\": "src/"
+		}
+	},
+	"extra": {}
+}

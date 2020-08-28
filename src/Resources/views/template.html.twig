@@ -1,0 +1,22 @@
+<script>
+    const templates = JSON.parse('{{ templates|raw }}')
+    __log('script: OK');
+    const socket  = new WebSocket('ws://127.0.0.1:{{ server_port }}', 'reload-bundle-protocol');
+    socket.onopen = function(event) {
+        __log('Listen for changes...');
+    };
+    socket.onmessage = function (event) {
+        if ( 0 < templates.filter((i) => event.data === i).length) {
+            // force reload
+            document.location.reload(true);
+        }
+    }
+
+    socket.onerror = function (event) {
+        __log('No connection');
+    }
+
+    function __log(message) {
+        console.log('[Reload Bundle] ' + message);
+    }
+</script>

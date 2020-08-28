@@ -1,0 +1,26 @@
+services:
+    # COMMANDS
+    reload.command.configure:
+        public: true
+        class: Damian972\ReloadBundle\Command\ConfigureCommand
+        arguments: ['@kernel']
+        tags:
+            - { name: console.command }
+
+    Damian972\ReloadBundle\Command\ConfigureCommand: '@reload.command.watcher'
+
+    reload.command.watcher:
+        public: true
+        class: Damian972\ReloadBundle\Command\FileWatcherCommand
+        arguments: ['@kernel', '%reload.server_port%']
+        tags:
+            - { name: console.command }
+
+    Damian972\ReloadBundle\Command\FileWatcherCommand: '@reload.command.watcher'
+
+    # SUBSCRIBERS
+    reload.response_subscriber:
+        class: Damian972\ReloadBundle\Subscriber\ResponseSubscriber
+        arguments: ['@profiler', '@twig', '%reload.server_port%']
+        tags:
+            - { name: kernel.event_subscriber }
